@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glidechart – PT chart, superheat and subcool calculator</title>
+  <meta name="description" content="A PT chart and superheat/subcool calculator for R-410A, R-32, R-454B, R-22 and R-134a. Superheat on the dew point, subcooling on the bubble point. Offline.">
+  <link rel="canonical" href="https://soloinc-projects.github.io/glidechart/">
+  <meta name="theme-color" content="#A4481D" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F1215" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preload" href="fonts/InstrumentSans-Bold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="assets/site.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Glidechart">
+  <meta property="og:title" content="Glidechart – PT chart, superheat and subcool calculator">
+  <meta property="og:description" content="Superheat on the dew point, subcooling on the bubble point, for R-410A, R-32, R-454B, R-22 and R-134a, with the working and its source under every reading. Offline, no account.">
+  <meta property="og:url" content="https://soloinc-projects.github.io/glidechart/">
+  <meta property="og:image" content="https://soloinc-projects.github.io/glidechart/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Glidechart mark, a white refrigeration gauge with a blue low side and a red high side and its needle in the gap between them, beside the name Glidechart, on copper.">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Glidechart",
+    "description": "A pressure-temperature (PT) chart and superheat/subcool calculator for R-410A, R-32, R-454B, R-22 and R-134a. Superheat is read against the dew point and subcooling against the bubble point, with no switch to set. Every value is computed on the phone with CoolProp. Works offline, with no account.",
+    "applicationCategory": "ReferenceApplication",
+    "operatingSystem": "iOS 26 or later, iPadOS 26 or later, Android 10 or later",
+    "url": "https://soloinc-projects.github.io/glidechart/",
+    "image": "https://soloinc-projects.github.io/glidechart/og-image.png",
+    "screenshot": [
+      "https://soloinc-projects.github.io/glidechart/screenshots/01-readings.png",
+      "https://soloinc-projects.github.io/glidechart/screenshots/02-chart.png",
+      "https://soloinc-projects.github.io/glidechart/screenshots/03-caution.png"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "8086 LLC",
+      "email": "support@8086.llc"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="./" aria-label="Glidechart, home">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle class="mark-bezel" cx="12" cy="12" r="9.5"/>
+          <circle class="mark-dial" cx="12" cy="12" r="8.2"/>
+          <path fill="#2F7DE1" d="M6.5199 17.4801A7.75 7.75 0 0 1 14.1362 4.5502L13.7227 5.9921A6.25 6.25 0 0 0 7.5806 16.4194Z"/>
+          <path fill="#D7263D" d="M15.3974 5.0343A7.75 7.75 0 0 1 17.4801 17.4801L16.4194 16.4194A6.25 6.25 0 0 0 14.7398 6.3825Z"/>
+          <g stroke="#23272C" stroke-width="0.8" stroke-linecap="round">
+            <line x1="8.4645" y1="15.5355" x2="7.8281" y2="16.1719"/>
+            <line x1="7" y1="12" x2="6.1" y2="12"/>
+            <line x1="8.4645" y1="8.4645" x2="7.8281" y2="7.8281"/>
+            <line x1="12" y1="7" x2="12" y2="6.1"/>
+            <line x1="15.5355" y1="8.4645" x2="16.1719" y2="7.8281"/>
+            <line x1="17" y1="12" x2="17.9" y2="12"/>
+            <line x1="15.5355" y1="15.5355" x2="16.1719" y2="16.1719"/>
+          </g>
+          <path fill="#23272C" d="M12.2202 13.7983L14.4631 6.1973L14.0523 6.0396L10.6331 13.1891Z"/>
+          <circle fill="#23272C" cx="12" cy="12" r="1.55"/>
+          <circle fill="#FFFFFF" cx="12" cy="12" r="0.55"/>
+        </svg>
+        <span class="wordmark">Glidechart</span>
+      </a>
+      <nav class="site-nav" aria-label="Pages">
+        <a href="support/">Support</a>
+        <a href="privacy/">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      <div class="hero">
+        <div>
+          <h1>Superheat on the dew point. Subcooling on the bubble point.</h1>
+          <p class="lede">Glidechart is a PT chart and superheat/subcool calculator for R-410A, R-32, R-454B, R-22 and R-134a. Type what your gauges and clamp read, and the saturation temperature, the superheat and the subcooling appear as you type, with the working and its source under each one. No account, and it works with no signal.</p>
+          <ul class="cta" aria-label="Where to get Glidechart">
+            <li><span class="store">App Store</span><span class="when">Coming soon for iPhone and iPad</span></li>
+            <li><span class="store">Google Play</span><span class="when">Coming soon for Android</span></li>
+          </ul>
+          <p class="secondary">No account, no ads, and nothing collected. <a href="privacy/">Privacy</a></p>
+        </div>
+        <figure class="hero-shot">
+          <img src="screenshots/01-readings.png" width="460" height="1022" alt="Glidechart's Readings screen with R-454B chosen. Low side, suction: suction pressure 107.5 psig, dew point 40.0 °F, glide at 107.5 psig 2.7 °F, suction line 52.0 °F, superheat 12.0 °F, and under it 52.0 °F line minus 40.0 °F dew point (R-454B, CoolProp). High side, liquid: liquid pressure 330.0 psig, bubble point 106.0 °F, glide 2.6 °F, liquid line 96.0 °F.">
+        </figure>
+      </div>
+    </div>
+
+    <section aria-labelledby="sides">
+      <div class="wrap">
+        <h2 id="sides">Laid out like your manifold</h2>
+        <div class="sides">
+          <div class="side low-side">
+            <h3 class="low">Low side · suction</h3>
+            <p>Type the suction pressure and the <strong>dew point</strong> appears. Type the suction line temperature and the <strong>superheat</strong> appears: line temperature minus dew point.</p>
+          </div>
+          <div class="side high-side">
+            <h3 class="high">High side · liquid</h3>
+            <p>Type the liquid pressure and the <strong>bubble point</strong> appears. Type the liquid line temperature and the <strong>subcooling</strong> appears: bubble point minus line temperature.</p>
+          </div>
+        </div>
+        <p>The side decides the curve, so a blend is never read on the wrong one, and there is no dew or bubble switch to set. On R-410A and R-454B the two points differ by the glide, and Glidechart shows it at the pressure you typed. On R-32, R-22 and R-134a they are the same.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="proof">
+      <div class="wrap">
+        <h2 id="proof">Check it yourself</h2>
+        <ul class="cards">
+          <li>
+            <h3>Compare a number</h3>
+            <p>R-410A at 40&nbsp;°F reads <span class="num">118.4</span>&nbsp;psig on the dew point and <span class="num">118.8</span>&nbsp;psig on the bubble point. Put it beside the chart you trust.</p>
+          </li>
+          <li>
+            <h3>See the glide</h3>
+            <p>Pick R-454B and type <span class="num">107.5</span>&nbsp;psig on the low side. The dew point is <span class="num">40.0</span>&nbsp;°F, and the line under it reads “Glide at 107.5 psig: 2.7 °F”.</p>
+          </li>
+          <li>
+            <h3>Turn the signal off</h3>
+            <p>Put the phone in airplane mode and open Glidechart cold. Readings is the first screen, with no sign-in, and nothing you type leaves the phone.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="screens">
+      <div class="wrap">
+        <h2 id="screens">Readings, the PT chart and a caution</h2>
+        <div class="shots">
+          <figure>
+            <img src="screenshots/02-chart.png" width="460" height="1022" loading="lazy" alt="The PT chart for R-454B by °F: rows every 1 °F from 35 to 47 °F with the dew pressure for superheat and the bubble pressure for subcool side by side, the 40 °F row marked as the last reading with 107.5 and 113.2 psig, and an index from −20 to 120 along the edge.">
+            <figcaption>A PT chart every 1 °F, −20 °F to 120 °F</figcaption>
+          </figure>
+          <figure>
+            <img src="screenshots/03-caution.png" width="460" height="1022" loading="lazy" alt="Readings for R-410A: suction pressure 118.4 psig, dew point 40.0 °F, suction line 38.0 °F and superheat −2.0 °F, with an amber caution, Superheat at or below zero: liquid refrigerant may be returning to the compressor; re-check the pressure and the line temperature. The high side shows 1180 psig with no bubble point.">
+            <figcaption>Cautions say what to re-check</figcaption>
+          </figure>
+          <figure>
+            <img src="screenshots/04-readings-dark.png" width="460" height="1022" loading="lazy" alt="The same R-454B readings in dark mode: superheat 12.0 °F on the low side in blue, with the high side in red below it.">
+            <figcaption>Light or dark</figcaption>
+          </figure>
+        </div>
+        <p class="note">These pictures are the design's final screens, drawn on Android. The store screenshots, taken from the built app, will replace them.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="what">
+      <div class="wrap">
+        <h2 id="what">What it does</h2>
+        <ul>
+          <li><strong>Both sides at once.</strong> The low side gives the dew point and the superheat; the high side gives the bubble point and the subcooling. Each works both ways: type a saturation temperature to get its pressure.</li>
+          <li><strong>The working, written out.</strong> Under each result: “52.0 °F line − 40.0 °F dew point (R-454B, CoolProp)”.</li>
+          <li><strong>A PT chart every 1&nbsp;°F</strong> from −20&nbsp;°F to 120&nbsp;°F, or every 1&nbsp;psig across the same range, with the dew and bubble columns side by side on a blend. An index along the edge jumps to a row, and your last reading’s row is marked.</li>
+          <li><strong>Cautions, never verdicts.</strong> A superheat or subcooling at or below zero, a pressure with no saturation point, or a saturation temperature outside the chart’s range is flagged in amber with what to re-check. Glidechart gives readings. It does not judge a charge.</li>
+          <li><strong>Made for the service call.</strong> Opens straight to Readings. Clear empties both sides, and Undo puts them back. Long-press a result to copy it, source included. Dark mode, large text, VoiceOver and TalkBack.</li>
+          <li><strong>From the system.</strong> On iPhone, Spotlight finds each refrigerant and Siri answers “Look up PT in Glidechart”. On Android, long-press the icon for a refrigerant you used recently.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="source">
+      <div class="wrap">
+        <h2 id="source">The source beside every number</h2>
+        <p>Every value is computed on the phone with <a href="https://coolprop.org">CoolProp</a>, the open-source thermophysical property library: Bell, Wronski, Quoilin and Lemort (2014), <cite>Industrial &amp; Engineering Chemistry Research</cite> 53(6), 2498–2508. CoolProp is used under the MIT License (<a href="terms/#notices">notices</a>).</p>
+        <p>R-454B is modelled as 68.9% R-32 and 31.1% R-1234yf by mass. R-32 and R-454B are A2L refrigerants, mildly flammable. Units are °F and psig, with gauge pressure measured from one standard atmosphere, 14.696&nbsp;psia, so a negative psig is below atmospheric.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="reference">
+      <div class="wrap">
+        <h2 id="reference">Reference only</h2>
+        <p class="quote">Reference tool only — verify against manufacturer specs and site conditions before charging.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="privacy">
+      <div class="wrap">
+        <h2 id="privacy">Privacy</h2>
+        <p>Glidechart has no account and collects no data. What you type stays on your phone. <a href="privacy/">Read the privacy policy</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav aria-label="Site">
+        <a href="support/">Support</a>
+        <a href="privacy/">Privacy</a>
+        <a href="terms/">Terms and notices</a>
+      </nav>
+      <p>Glidechart is made by 8086 LLC. <a href="mailto:support@8086.llc">support@8086.llc</a></p>
+      <p>© 2026 8086 LLC.</p>
+    </div>
+  </footer>
+</body>
+</html>

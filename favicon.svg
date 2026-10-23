@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="240" height="240" role="img" aria-labelledby="title" data-grid="24" data-bezel="9.5" data-dial="8.2" data-band="7 1.5 135 286 296 405" data-ticks="5 5.9 0.8 135 45 7" data-needle="291 6.3 1.6 0.85 0.22" data-hub="1.55 0.55">
+  <title id="title">Glidechart</title>
+  <desc>The Glidechart mark: a refrigeration gauge on a 24-unit grid, centre (12, 12), angles clockwise from 3 o'clock. Bezel radius 9.5; dial radius 8.2. Scale band 1.5 wide on radius 7: the low side (blue) from 135 to 286 degrees and the high side (red) from 296 to 405, parted by the glide gap the needle points into. 7 ticks from radius 5 to 5.9, every 45 degrees from 135. Needle at 291 degrees, 6.3 long; hub radius 1.55. Written by assets/generate-assets.py --write-logo from the data- numbers on this element; never edited by hand.</desc>
+  <circle id="bezel" cx="12" cy="12" r="9.5" fill="#23272C"/>
+  <circle id="dial" cx="12" cy="12" r="8.2" fill="#FFFFFF"/>
+  <path id="band-low" fill="#2F7DE1" d="M6.5199 17.4801A7.75 7.75 0 0 1 14.1362 4.5502L13.7227 5.9921A6.25 6.25 0 0 0 7.5806 16.4194Z"/>
+  <path id="band-high" fill="#D7263D" d="M15.3974 5.0343A7.75 7.75 0 0 1 17.4801 17.4801L16.4194 16.4194A6.25 6.25 0 0 0 14.7398 6.3825Z"/>
+  <g id="ticks" stroke="#23272C" stroke-width="0.8" stroke-linecap="round">
+    <line x1="8.4645" y1="15.5355" x2="7.8281" y2="16.1719"/>
+    <line x1="7" y1="12" x2="6.1" y2="12"/>
+    <line x1="8.4645" y1="8.4645" x2="7.8281" y2="7.8281"/>
+    <line x1="12" y1="7" x2="12" y2="6.1"/>
+    <line x1="15.5355" y1="8.4645" x2="16.1719" y2="7.8281"/>
+    <line x1="17" y1="12" x2="17.9" y2="12"/>
+    <line x1="15.5355" y1="15.5355" x2="16.1719" y2="16.1719"/>
+  </g>
+  <path id="needle" fill="#23272C" d="M12.2202 13.7983L14.4631 6.1973L14.0523 6.0396L10.6331 13.1891Z"/>
+  <circle id="hub" cx="12" cy="12" r="1.55" fill="#23272C"/>
+  <circle id="hub-cap" cx="12" cy="12" r="0.55" fill="#FFFFFF"/>
+</svg>

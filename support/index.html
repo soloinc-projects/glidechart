@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support – Glidechart</title>
+  <meta name="description" content="Help with Glidechart, the PT chart and superheat/subcool calculator: how it reads blends, where the numbers come from, and how to reach us.">
+  <link rel="canonical" href="https://soloinc-projects.github.io/glidechart/support/">
+  <meta name="theme-color" content="#A4481D" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F1215" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="stylesheet" href="../assets/site.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Glidechart">
+  <meta property="og:title" content="Support – Glidechart">
+  <meta property="og:description" content="How Glidechart reads blends, where its numbers come from, and how to reach us.">
+  <meta property="og:url" content="https://soloinc-projects.github.io/glidechart/support/">
+  <meta property="og:image" content="https://soloinc-projects.github.io/glidechart/og-image.png">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../" aria-label="Glidechart, home">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle class="mark-bezel" cx="12" cy="12" r="9.5"/>
+          <circle class="mark-dial" cx="12" cy="12" r="8.2"/>
+          <path fill="#2F7DE1" d="M6.5199 17.4801A7.75 7.75 0 0 1 14.1362 4.5502L13.7227 5.9921A6.25 6.25 0 0 0 7.5806 16.4194Z"/>
+          <path fill="#D7263D" d="M15.3974 5.0343A7.75 7.75 0 0 1 17.4801 17.4801L16.4194 16.4194A6.25 6.25 0 0 0 14.7398 6.3825Z"/>
+          <g stroke="#23272C" stroke-width="0.8" stroke-linecap="round">
+            <line x1="8.4645" y1="15.5355" x2="7.8281" y2="16.1719"/>
+            <line x1="7" y1="12" x2="6.1" y2="12"/>
+            <line x1="8.4645" y1="8.4645" x2="7.8281" y2="7.8281"/>
+            <line x1="12" y1="7" x2="12" y2="6.1"/>
+            <line x1="15.5355" y1="8.4645" x2="16.1719" y2="7.8281"/>
+            <line x1="17" y1="12" x2="17.9" y2="12"/>
+            <line x1="15.5355" y1="15.5355" x2="16.1719" y2="16.1719"/>
+          </g>
+          <path fill="#23272C" d="M12.2202 13.7983L14.4631 6.1973L14.0523 6.0396L10.6331 13.1891Z"/>
+          <circle fill="#23272C" cx="12" cy="12" r="1.55"/>
+          <circle fill="#FFFFFF" cx="12" cy="12" r="0.55"/>
+        </svg>
+        <span class="wordmark">Glidechart</span>
+      </a>
+      <nav class="site-nav" aria-label="Pages">
+        <a href="./" aria-current="page">Support</a>
+        <a href="../privacy/">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <div class="prose">
+      <h1>Support</h1>
+      <p>Write to <a href="mailto:support@8086.llc">support@8086.llc</a>. If a number looks wrong, send the refrigerant, what you typed, what Glidechart showed, and the chart or tool you compared it with, so it can be checked against the source.</p>
+
+      <h2>Questions people ask first</h2>
+      <dl>
+        <dt>Which refrigerants does it cover?</dt>
+        <dd>Five: R-410A, R-32, R-454B, R-22 and R-134a.</dd>
+
+        <dt>Why does superheat use the dew point and subcooling the bubble point?</dt>
+        <dd>Superheat is measured on the suction line, where the refrigerant has just finished boiling, so it is read against the dew point: suction line temperature minus dew point. Subcooling is measured on the liquid line, where it has just finished condensing, so it is read against the bubble point: bubble point minus liquid line temperature. Glidechart picks the curve from the side you type on, so there is no switch to set.</dd>
+
+        <dt>What is glide?</dt>
+        <dd>On a blend such as R-410A or R-454B, the dew point and the bubble point at one pressure differ. That difference is the glide. Glidechart shows it under the saturation temperature on a blend, for example “Glide at 107.5 psig: 2.7 °F” on R-454B. On a single compound (R-32, R-22, R-134a) the two points are the same, so there is no glide line.</dd>
+
+        <dt>Where do the numbers come from?</dt>
+        <dd>Every value is computed on your phone with <a href="https://coolprop.org">CoolProp</a>, the open-source thermophysical property library (Bell, Wronski, Quoilin and Lemort, 2014). Each result names it in the working under it. R-454B is modelled as 68.9% R-32 and 31.1% R-1234yf by mass. About in the app shows the version Glidechart uses.</dd>
+
+        <dt>Can I look up a pressure from a temperature?</dt>
+        <dd>Yes. Type a temperature in the Dew point or Bubble point field and the pressure appears. On the PT chart, switch between By °F and By psig.</dd>
+
+        <dt>Why does it say “No saturation point”?</dt>
+        <dd>The pressure you typed has no saturation point for that refrigerant, which is usually a mistyped digit. Check the digits.</dd>
+
+        <dt>What does a negative psig mean?</dt>
+        <dd>Gauge pressure is measured from one standard atmosphere, 14.696&nbsp;psia. A negative psig is below atmospheric, a vacuum on the gauge.</dd>
+
+        <dt>Can I use °C, kPa or bar, or correct for altitude?</dt>
+        <dd>Not in this version. Glidechart works in °F and psig, with gauge pressure from one standard atmosphere.</dd>
+
+        <dt>Does it tell me whether the charge is right?</dt>
+        <dd>No. Glidechart gives readings. It does not judge a charge. Compare the superheat and subcooling with the equipment manufacturer’s charging chart. Reference tool only — verify against manufacturer specs and site conditions before charging.</dd>
+
+        <dt>Does it need a signal or an account?</dt>
+        <dd>Neither. It works in airplane mode, and there is no account or sign-in.</dd>
+
+        <dt>I cleared my readings by mistake.</dt>
+        <dd>Tap Undo, which stays on screen until your next edit.</dd>
+
+        <dt>How do I copy a reading?</dt>
+        <dd>Long-press a result and choose Copy. The copy names the refrigerant, the curve and the source.</dd>
+
+        <dt>Does it work with large text and screen readers?</dt>
+        <dd>Yes: Dynamic Type and VoiceOver on iPhone and iPad, font size and TalkBack on Android, and dark mode on both.</dd>
+
+        <dt>Does it cost anything?</dt>
+        <dd>No. This version of Glidechart has no price, no in-app purchase, no subscription and no ads.</dd>
+      </dl>
+
+      <h2>Privacy</h2>
+      <p>Glidechart collects no data. <a href="../privacy/">Read the privacy policy</a>.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav aria-label="Site">
+        <a href="./">Support</a>
+        <a href="../privacy/">Privacy</a>
+        <a href="../terms/">Terms and notices</a>
+      </nav>
+      <p>Glidechart is made by 8086 LLC. <a href="mailto:support@8086.llc">support@8086.llc</a></p>
+      <p>© 2026 8086 LLC.</p>
+    </div>
+  </footer>
+</body>
+</html>
